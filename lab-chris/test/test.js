@@ -9,7 +9,7 @@ describe('Singly Linked List', () => {
       expect(node.next).toEqual(null);
     });
   });
-  describe('Append Node', () => {
+  describe('Append node', () => {
     it('Should add a node', () => {
       let node = new SLL('cat');
       let node2 = new SLL('dog');
@@ -29,6 +29,34 @@ describe('Singly Linked List', () => {
       node.appendNode();
       expect(node.value).toEqual('cat');
       expect(node.next).toEqual(null);
+    });
+  });
+  describe('Find middle node', () => {
+    it('Should find the middle node', () => {
+      let node = new SLL('cat');
+      let node2 = new SLL('dog');
+      node.appendNode(node2);
+      let node3 = new SLL('fish');
+      node.appendNode(node3);
+      let middle = node.findMiddle();
+      expect(middle.value).toEqual('dog');
+      expect(middle.next.value).toEqual('fish');
+      expect(middle.next.next).toEqual(null);
+    });
+    it('Should find the only node', () => {
+      let node = new SLL('cat');
+      let middle = node.findMiddle();
+      expect(middle.value).toEqual('cat');
+      expect(middle.next).toEqual(null);
+    });
+    it('Should find the first node', () => {
+      let node = new SLL('cat');
+      let node2 = new SLL('dog');
+      node.appendNode(node2);
+      let middle = node.findMiddle();
+      expect(middle.value).toEqual('cat');
+      expect(middle.next.value).toEqual('dog');
+      expect(middle.next.next).toEqual(null);
     });
   });
 });
