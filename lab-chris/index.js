@@ -17,9 +17,25 @@ module.exports = class SLL {
     this.next.appendNode(node);
   }
 
-  // removeNode(node){
-  //   }
-  // }
+  remove(node) {
+    if(!(node instanceof SLL))
+      return null;
+    let prev = this;
+    let curr = prev.next;
+    while(prev) {
+      if(curr === node) {
+        prev.next = curr.next;
+        return;
+      }
+      prev = curr;
+      if(curr.next)
+        curr = curr.next;
+      else
+        return;
+    }
+  }
+
+
   //
   // reverse(callback){
   //   }
