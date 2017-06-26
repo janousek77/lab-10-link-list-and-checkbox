@@ -35,12 +35,6 @@ module.exports = class SLL {
     }
   }
 
-
-  //
-  // reverse(callback){
-  //   }
-  // }
-
   forEach(callback){
     let current = this;
     while(current){
@@ -58,4 +52,18 @@ module.exports = class SLL {
     }
     return slow;
   }
+
+  reverse() {
+    let latest;
+    let list;
+    let curr = this;
+    while(curr) {
+      latest = new SLL(curr.value);
+      curr = curr.next;
+      latest.appendNode(list);
+      list = latest;
+    }
+    return list;
+  }
+
 };

@@ -35,8 +35,8 @@ describe('Singly Linked List', () => {
     it('Should find the middle node', () => {
       let node = new SLL('cat');
       let node2 = new SLL('dog');
-      node.appendNode(node2);
       let node3 = new SLL('fish');
+      node.appendNode(node2);
       node.appendNode(node3);
       let middle = node.findMiddle();
       expect(middle.value).toEqual('dog');
@@ -63,8 +63,8 @@ describe('Singly Linked List', () => {
     it('Should remove a node', () => {
       let node = new SLL('cat');
       let node2 = new SLL('dog');
-      node.appendNode(node2);
       let node3 = new SLL('fish');
+      node.appendNode(node2);
       node.appendNode(node3);
       node.remove(node2);
       expect(node.value).toEqual('cat');
@@ -74,8 +74,8 @@ describe('Singly Linked List', () => {
     it('Shouldn\'t remove anything', () => {
       let node = new SLL('cat');
       let node2 = new SLL('dog');
-      node.appendNode(node2);
       let node3 = new SLL('fish');
+      node.appendNode(node2);
       node.appendNode(node3);
       node.remove(7);
       expect(node.value).toEqual('cat');
@@ -86,15 +86,53 @@ describe('Singly Linked List', () => {
     it('Shouldn\'t remove anything', () => {
       let node = new SLL('cat');
       let node2 = new SLL('dog');
-      node.appendNode(node2);
       let node3 = new SLL('fish');
-      node.appendNode(node3);
       let node4 = new SLL('squirrel');
+      node.appendNode(node2);
+      node.appendNode(node3);
       node.remove(node4);
       expect(node.value).toEqual('cat');
       expect(node.next.value).toEqual('dog');
       expect(node.next.next.value).toEqual('fish');
       expect(node.next.next.next).toEqual(null);
+    });
+  });
+  describe('Reverse', () => {
+    it('Should reverse a list and return a new one', () => {
+      let node = new SLL('cat');
+      let node2 = new SLL('dog');
+      let node3 = new SLL('fish');
+      node.appendNode(node2);
+      node.appendNode(node3);
+      let newList = node.reverse();
+      expect(newList.value).toEqual('fish');
+      expect(newList.next.value).toEqual('dog');
+      expect(newList.next.next.value).toEqual('cat');
+      expect(newList.next.next.next).toEqual(null);
+    });
+    it('Should reverse a list and return a new one', () => {
+      let node = new SLL('cat');
+      let node2 = new SLL('dog');
+      let node3 = new SLL('fish');
+      let node4 = new SLL('squirrel');
+      let node5 = new SLL('mouse');
+      node.appendNode(node2);
+      node.appendNode(node3);
+      node.appendNode(node4);
+      node.appendNode(node5);
+      let newList = node.reverse();
+      expect(newList.value).toEqual('mouse');
+      expect(newList.next.value).toEqual('squirrel');
+      expect(newList.next.next.value).toEqual('fish');
+      expect(newList.next.next.next.value).toEqual('dog');
+      expect(newList.next.next.next.next.value).toEqual('cat');
+      expect(newList.next.next.next.next.next).toEqual(null);
+    });
+    it('Shouldn\'t change anyything', () => {
+      let node = new SLL('cat');
+      let newList = node.reverse();
+      expect(newList.value).toEqual('cat');
+      expect(newList.next).toEqual(null);
     });
   });
 });
