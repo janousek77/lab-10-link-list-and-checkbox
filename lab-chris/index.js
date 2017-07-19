@@ -7,6 +7,7 @@ module.exports = class SLL {
     this.next = null;
   }
 
+  // O(n)
   appendNode(node){
     if(!(node instanceof SLL))
       return null;
@@ -17,6 +18,7 @@ module.exports = class SLL {
     this.next.appendNode(node);
   }
 
+  // O(n)
   remove(node) {
     if(!(node instanceof SLL))
       return null;
@@ -35,6 +37,7 @@ module.exports = class SLL {
     }
   }
 
+  // O(n)
   forEach(callback){
     let current = this;
     while(current){
@@ -43,6 +46,7 @@ module.exports = class SLL {
     }
   }
 
+  // O(n)
   findMiddle(){
     let slow, fast;
     slow = fast = this;
@@ -53,6 +57,7 @@ module.exports = class SLL {
     return slow;
   }
 
+  // O(n)
   reverse() {
     let latest;
     let list;
